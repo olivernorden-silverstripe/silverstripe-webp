@@ -1,0 +1,13 @@
+{
+    "name": "olivernorden/silverstripe-webp",
+    "description": "Optimize pages by using modern image formats, such as, WebP & JPEG 2000, that provide better compression",
+    "type": "vendor-package",
+    "license": "BSD-3",
+    "authors": [
+        {
+            "name": "Oliver Nordén",
+            "email": "oliver@tapirens.se"
+        }
+    ],
+    "require": {}
+}

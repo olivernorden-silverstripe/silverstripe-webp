@@ -15,13 +15,21 @@ use SilverStripe\View\ArrayData;
 class ImageExtension extends DataExtension {
 
     public function Picture($image, $class = null) {
+
+        $webpRelative = $this->ConvertToWebP($image);
+        return $this->PictureTag($image, $webpRelative, $class);
+    }
+
+    public function WebPSrc($image) {
+        return $this->ConvertToWebP($image);
+    }
+
+    public function ConvertToWebP($image) {
         $source = $this->AssetsPath().$image;
         $destination = $this->DestinationPath($image);
         $options = $this->Options();
         WebPConvert::convert($source, $destination, $options);
-        $webpRelative = $this->RelativeLink($image);
-
-        return $this->PictureTag($image, $webpRelative, $class);
+        return $webpRelative = $this->RelativeLink($image);
     }
 
     public function RelativeLink($file) {

@@ -19,13 +19,14 @@ class ImageExtension extends DataExtension {
         $destination = $this->DestinationPath($image);
         $options = $this->Options();
         WebPConvert::convert($source, $destination, $options);
-        $webpRelative = $this->RelativeLink($destination);
+        $webpRelative = $this->RelativeLink($image);
 
         return $this->PictureTag($image, $webpRelative, $class);
     }
 
     public function RelativeLink($file) {
-        return 'assets/'.$file;
+        $imagePathNoAssets = str_replace('/assets', '', $file);
+        return '/assets/webp'.$imagePathNoAssets.'.webp';
     }
 
     public function Alt() {
@@ -51,7 +52,7 @@ class ImageExtension extends DataExtension {
 
     public function DestinationPath($image) {
         $imagePathNoAssets = str_replace('/assets', '', $image);
-        return ASSETS_PATH.'/webp/'.$imagePathNoAssets.'.webp';
+        return ASSETS_PATH.'/webp'.$imagePathNoAssets.'.webp';
     }
 
     public function AssetsPath() {

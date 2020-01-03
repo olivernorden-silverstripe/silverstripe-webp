@@ -1,5 +1,5 @@
 <picture>
-    <source srcset="$webPSrc" type="image/webp">
+    <source srcset="$WebPSrc" type="image/webp">
     <img
         src='$ImageSrc'
         class='$Class'
